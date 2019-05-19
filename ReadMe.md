@@ -1,4 +1,4 @@
-Almost all applications have login fucntionality and when we try to create new project we either copy paste the code from other project and add validation for username/password. I have created this library which will validate the fields using 2-3 lines of code. You juse need to pass the EditText instance of username and password to LoginBuilder class.
+Almost all applications have login fucntionality and when we try to create new project we either copy paste the code from other project and add validation for username/password. I have created this library which will validate the fields using 2-3 lines of code. You just need to pass the EditText instance of username and password to LoginBuilder class.
 
 Step to add this import library in your project.
 
@@ -41,16 +41,18 @@ Your login.xml file would be like
         android:inputType="textPassword" />
 
     <Button
+    	android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="Login" />
 ```
 
-Add below code in your LoginActivity.java
+Add below code in your LoginActivity.java in Onlclick event on Login button
 
 ```
-
+@OnClick({R.id.loginButton})
+void onClick(View view) {
 // parameters username and password are the EditText intsance.
 
  LoginBuilder loginBuilder = LoginBuilder.getInstance().setPasswordField(password).setUsernameField(username)
@@ -69,6 +71,8 @@ Add below code in your LoginActivity.java
             }
 
         }).login();
+
+}
 
 ```
 
